@@ -142,7 +142,7 @@ const getValidatorModule: GetValidatorModuleSpec = async () => {
   }
 
   // allow to skip the validate function if it's in development or test mode if no schema validator is provided
-  if (process.env.NODE_ENV === 'dev' || process.env.NODE_ENV === 'test') {
+  if (process.env.SKIP_XML_VALIDATION === 'true' || process.env.NODE_ENV === 'dev' || process.env.NODE_ENV === 'test') {
     return {
       validate: (_xml: string) => {
         return new Promise((resolve, _reject) => resolve('SKIP_XML_VALIDATION'));
